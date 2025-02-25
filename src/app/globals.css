@@ -2,20 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+.border-gradient {
+  border-width: 0.5px;
+  outline: linear-gradient(to right, #ea0d12, #f52c70, #fd9e2b);
+  border-style: solid;
+  border-image-source: linear-gradient(to right, #ea0d12, #f52c70, #fd9e2b);
+  border-image-slice: 1;
+  border-radius: "30px";
+}
+.border-gradient-b {
+  border-bottom: 0.5px;
+  border-style: solid;
+  border-image-source: linear-gradient(to right, #ea0d12, #f52c70, #fd9e2b);
+  border-image-slice: 1;
 }
