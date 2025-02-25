@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 // import { navbarLinks } from "../../../data/constants";
 import { usePathname } from "next/navigation";
@@ -61,6 +60,20 @@ const Navbar = () => {
                         </Link>
                       </li>
                     ))}
+
+                    <div className="bg-white border shadow-sm rounded-full flex gap-2 items-center p-2">
+                      <div className="search-icon">
+                        <SearchIcon
+                          onClick={handleShowSearch}
+                          className="flex text-tertiary"
+                        />
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Search Your Result..."
+                        className="flex w-full"
+                      />
+                    </div>
                   </ul>
                 </div>
               </div>
@@ -84,7 +97,6 @@ const Navbar = () => {
                 placeholder="Search Your Result..."
                 className="hidden lg:flex w-full"
               />
-              {/* Content here */}
             </div>
 
             {showSearch && (
