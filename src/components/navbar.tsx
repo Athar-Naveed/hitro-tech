@@ -6,14 +6,23 @@ import { usePathname } from "next/navigation";
 import { Squeeze as Hamburger, Cross } from "hamburger-react";
 import { navbarLinks } from "@/data/constants";
 import Button from "./Button/button";
-import { SearchIcon } from "lucide-react";
+import { ChevronDown, SearchIcon } from "lucide-react";
+import Search from "./search";
+import DropDown from "./dropdown";
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [title, setTitle] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
   const path = usePathname();
 
   if (path.includes("studio")) return null;
+
   const handleShowSearch = () => setShowSearch(!showSearch);
+  const handleDropdown = (title: string) => {
+    setShowDropdown(!showDropdown);
+    setTitle(title);
+  };
   return (
     <>
       <nav className="bg-white border-gradient-b p-2">
@@ -85,19 +94,7 @@ const Navbar = () => {
   // -------------------
   */}
           <div className="search">
-            <div className="bg-white lg:border shadow-sm rounded-full hidden md:flex gap-2 items-center p-2">
-              <div className="search-icon">
-                <SearchIcon
-                  onClick={handleShowSearch}
-                  className="flex text-tertiary"
-                />
-              </div>
-              <input
-                type="text"
-                placeholder="Search Your Result..."
-                className="hidden lg:flex w-full"
-              />
-            </div>
+            <Search handleShowSearch={handleShowSearch} />
 
             {showSearch && (
               <div className="absolute top-28 visible lg:hidden">
@@ -123,18 +120,35 @@ const Navbar = () => {
           >
             <ul className="flex items-end">
               {navbarLinks.map((link, index) => (
-                <li key={index}>
+                <li key={index} className="flex items-center lg:mx-1 xl:mx-5">
                   <Link
                     href={link.href}
-                    className="py-2 px-3 text-black hover:text-slate-700"
+                    className={`py-2 ${
+                      link.title === "Services" || link.title === "Resources"
+                        ? "px-0"
+                        : "px-3"
+                    } text-black hover:underline hover:underline-offset-8 decoration-2 decoration-tertiary`}
                     aria-label={link.title}
                   >
                     {link.title}
                   </Link>
+                  {link.title === "Services" && (
+                    <ChevronDown
+                      onClick={() => handleDropdown(link.title)}
+                      className="text-sm w-4 h-4 cursor-pointer mr-2"
+                    />
+                  )}
+                  {link.title === "Resources" && (
+                    <ChevronDown
+                      onClick={() => handleDropdown(link.title)}
+                      className="text-sm w-4 h-4 cursor-pointer"
+                    />
+                  )}
                 </li>
               ))}
             </ul>
           </div>
+          {showDropdown && <DropDown title={title} />}
         </div>
       </nav>
     </>
