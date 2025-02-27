@@ -1,9 +1,8 @@
 import { navbarLinks } from "@/data/constants";
-import { DropdownType } from "@/types";
 import Link from "next/link";
 
-const DropDown = ({ title }: any) => {
-  const navbar = navbarLinks.filter((data: any) => data.title == title);
+const DropDown = ({ title }: { title: string }) => {
+  const navbar = navbarLinks.filter((data) => data.title == title);
   return (
     <>
       <div className="absolute mx-auto left-0 right-0 top-[85px] z-50 mt-2 w-[700px] lg:w-[900px] xl:w-[1100px] border border-tertiary rounded-b-2xl origin-top-left bg-white">

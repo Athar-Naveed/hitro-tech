@@ -11,11 +11,11 @@ const Carousel = ({ slider }: { slider: Array<SliderType> }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const scrollPrev = useCallback(() => {
+  useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
 
-  const scrollNext = useCallback(() => {
+  useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
