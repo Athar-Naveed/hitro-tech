@@ -74,11 +74,11 @@ const Carousel = ({ slider }: { slider: Array<SliderType> }) => {
                 </div>
                 <div className="relative h-[400px] md:h-[500px]">
                   <Image
-                    src={slide.image || "/placeholder.svg"}
+                    src={slide.image}
                     alt="Hero illustration"
                     fill
                     className="object-contain"
-                    priority
+                    priority={false}
                   />
                 </div>
               </div>
@@ -86,13 +86,12 @@ const Carousel = ({ slider }: { slider: Array<SliderType> }) => {
           ))}
         </div>
       </div>
-
-      {/* Dots Navigation */}
-      <div className="absolute right-5 sm:left-60 sm:right-0 md:left-[19rem] lg:left-[24rem] xl:left-[33rem] 2xl:left-[43rem] top-[35rem] sm:top-[22rem] md:top-[35rem] lg:top-[32rem] xl:top-[30rem] transform -translate-x-1/2 flex gap-2">
+      {/* Dots Navigation - Repositioned */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-2">
         {slider.map((_, index: number) => (
           <button
             key={index}
-            className={`h-2 w-2 rounded-full ${
+            className={`h-2 w-2 rounded-full transition-colors ${
               index === selectedIndex ? "bg-tertiary" : "bg-gray-300"
             }`}
             onClick={() => emblaApi?.scrollTo(index)}
