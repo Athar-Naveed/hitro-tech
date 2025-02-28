@@ -12,14 +12,32 @@ const Heading = ({
       <div className="grid">
         <div className={`heading `}>
           <h1
-            className={`${title === "Services" ? "text-xl" : "text-6xl"}
+            className={`gradient-heading ${
+              title === "Services" || title === "Bubble2"
+                ? "text-xl"
+                : title === "Process"
+                ? "sm:text-xl lg:text-2xl xl:text-4xl"
+                : title === "Subscribe"
+                ? "text-xl mx-5"
+                : "text-6xl"
+            }
             font-bold text-center text-primary
             `}
           >
             {text}
           </h1>
         </div>
-        <div className="data-desc">{desc}</div>
+        <div
+          className={`
+          ${
+            title === "Subscribe"
+              ? "gradient-heading text-4xl font-semibold text-center"
+              : "data-desc"
+          }
+          `}
+        >
+          {desc}
+        </div>
       </div>
     </>
   );

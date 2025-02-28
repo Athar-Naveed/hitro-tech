@@ -32,9 +32,10 @@ body {
 .button-gradient {
   @apply bg-gradient-to-r from-primary via-secondary to-tertiary text-white;
 }
-/* .gradient-heading {
-  @apply;
-} */
+
+.gradient-heading {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary;
+}
 
 .data-desc {
   @apply max-w-3xl text-center mx-auto my-6;

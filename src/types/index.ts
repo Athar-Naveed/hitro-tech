@@ -28,3 +28,13 @@ export interface CardType {
   description: string;
   image: string;
 }
+
+export interface StatType {
+  title: string;
+  number: string;
+}
+export interface TechType {
+  title: string;
+  desc: string;
+  src: string;
+}

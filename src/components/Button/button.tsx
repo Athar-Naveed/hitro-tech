@@ -13,12 +13,16 @@ const Button = ({ text, title }: { text: string; title?: string }) => {
           : text === selected
           ? "button-gradient"
           : "button-gradient"
-      } rounded-full px-4 sm:px-6 py-2 flex items-center`}
+      } ${title === "Query" ? "rounded-lg" : "rounded-full"} 
+      ${(title === "Bubble" || title === "Process") && "text-xs sm:text-lg"}
+      px-4 sm:px-6 py-2 flex items-center`}
     >
       {text}{" "}
       <span
         style={{ fontSize: "2rem" }}
-        className={`-mt-3 ${title === "Services" ? "hidden" : "flex"}`}
+        className={`-mt-3 ${
+          title === "Services" || title === "Query" ? "hidden" : "flex"
+        }`}
       >
         &rarr;
       </span>
